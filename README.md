@@ -44,9 +44,7 @@ CREATE TABLE produtos (
     data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-Com certeza! A estrutura do banco de dados (BD) é o alicerce do seu projeto. Vou te apresentar as tabelas necessárias para os 4 CRUDS (Produtos, Fornecedores, Clientes e Movimentações) usando SQL para MySQL/MariaDB.
-
-🗄️ Estrutura do Banco de Dados
+Estrutura do Banco de Dados
 Você precisará de cinco tabelas principais. Uma para cada CRUD e uma tabela auxiliar para mapear a relação entre Produtos e Fornecedores.
 
 1. Tabela produtos (CRUD Produtos)
