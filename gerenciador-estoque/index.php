@@ -5,7 +5,7 @@
 
 <?php
 $total_produtos = $pdo->query("SELECT COUNT(*) as total FROM produtos")->fetch()['total'];
-$estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quantidade <= quantidade_minima")->fetch()['total'];
+$estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quantidade_estoque = 0")->fetch()['total'];
 ?>
 
 <div class="row mt-4">
