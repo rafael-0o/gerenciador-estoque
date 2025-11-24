@@ -10,8 +10,8 @@ include '../includes/header.php';
 <?php
 $total_produtos = $pdo->query("SELECT COUNT(*) as total FROM produtos")->fetch()['total'];
 $total_categorias = $pdo->query("SELECT COUNT(*) as total FROM categorias")->fetch()['total'];
-$estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quantidade <= quantidade_minima")->fetch()['total'];
-$valor_total = $pdo->query("SELECT SUM(preco_custo * quantidade) as total FROM produtos")->fetch()['total'];
+$estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quantidade_estoque = 0")->fetch()['total'];
+$valor_total = $pdo->query("SELECT SUM(preco_custo * quantidade_estoque) as total FROM produtos")->fetch()['total'];
 ?>
 
 <div class="row mt-4">

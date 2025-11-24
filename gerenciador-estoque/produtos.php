@@ -4,12 +4,7 @@
 <h2>Catálogo de Produtos</h2>
 
 <?php
-$stmt = $pdo->query("
-    SELECT p.*, c.nome as categoria_nome 
-    FROM produtos p 
-    LEFT JOIN categorias c ON p.categoria_id = c.id 
-    ORDER BY p.nome
-");
+$stmt = $pdo->query("SELECT * FROM produtos ORDER BY nome");
 ?>
 
 <div class="table-responsive mt-4">
@@ -19,7 +14,6 @@ $stmt = $pdo->query("
                 <th>Nome</th>
                 <th>Preço</th>
                 <th>Estoque</th>
-                <th>Categoria</th>
             </tr>
         </thead>
         <tbody>
@@ -27,10 +21,9 @@ $stmt = $pdo->query("
             <tr>
                 <td><?php echo htmlspecialchars($produto['nome']); ?></td>
                 <td>R$ <?php echo number_format($produto['preco_venda'], 2, ',', '.'); ?></td>
-                <td class="<?php echo $produto['quantidade'] <= $produto['quantidade_minima'] ? 'text-danger fw-bold' : ''; ?>">
-                    <?php echo $produto['quantidade']; ?>
+                <td class="<?php echo (int)$produto['quantidade_estoque'] == 0 ? 'text-danger fw-bold' : ''; ?>">
+                    <?php echo (int)$produto['quantidade_estoque']; ?>
                 </td>
-                <td><?php echo htmlspecialchars($produto['categoria_nome']); ?></td>
             </tr>
             <?php endwhile; ?>
         </tbody>
