@@ -160,7 +160,7 @@ include '../includes/header.php';
 
 <?php if (isset($erro)): ?>
     <div style="background: #f8d7da; color: #721c24; padding: 15px; border: 1px solid #f5c6cb; border-radius: 5px; margin: 20px 0;">
-        ⚠️ <strong>Erro:</strong> <?php echo $erro; ?>
+        <strong>Erro:</strong> <?php echo $erro; ?>
     </div>
 <?php endif; ?>
 
