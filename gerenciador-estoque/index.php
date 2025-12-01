@@ -10,7 +10,7 @@ $estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quant
 
 <div class="row mt-4">
     <div class="col-md-3">
-        <div class="card text-white bg-primary">
+        <div class="card">
             <div class="card-body text-center">
                 <h4><?php echo $total_produtos; ?></h4>
                 <p>Total de Produtos</p>
@@ -18,7 +18,7 @@ $estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quant
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card text-white bg-danger">
+        <div class="card">
             <div class="card-body text-center">
                 <h4><?php echo $estoque_baixo; ?></h4>
                 <p>Estoque Baixo</p>

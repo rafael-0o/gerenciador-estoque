@@ -47,3 +47,23 @@ CREATE TABLE produto_fornecedor (
     FOREIGN KEY (produto_id) REFERENCES produtos(id),
     FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id)
 );
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha VARCHAR(32) NOT NULL, -- Armazenado em MD5
+    nivel_acesso ENUM('admin', 'usuario') DEFAULT 'usuario',
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Inserir usuário admin padrão (senha: admin123 em MD5)
+INSERT INTO usuarios (nome, email, senha, nivel_acesso) VALUES ('Administrador', 'admin@estoque.com', '0192023a7bbd73250516f069df18b500', 'admin');
+

@@ -1,2 +1,183 @@
-.card { margin-bottom: 1rem; }
-.table th { border-top: none; }
+:root {
+  --primary: #222;
+  --background: #f7f7f9;
+  --card: #fff;
+  --card-bg: #f8fafc;
+  --border: #e0e0e0;
+  --btn-bg: #ededed;
+  --btn-hover: #d1d1d1;
+  --btn-text: #222;
+  --danger: #444;
+  --muted: #888;
+  --neutral-900: #111827;
+  --neutral-800: #1f2937;
+  --neutral-700: #374151;
+  --neutral-600: #4b5563;
+  --neutral-500: #6b7280;
+}
+body, .bg-light {
+  background: var(--background) !important;
+  color: var(--primary);
+}
+.card {
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #e6edf5;
+  box-shadow: none;
+  background: var(--card-bg);
+}
+.card-header, .card-body h4, .card-body h2, h2, h4 {
+  text-align: center;
+  color: var(--primary);
+  font-weight: 500;
+}
+.table th {
+  border-top: none;
+  background: var(--card);
+  color: var(--primary);
+  text-align: center;
+  font-weight: 500;
+}
+.table td {
+  text-align: center;
+  color: var(--primary);
+}
+.btn, .btn-primary, .btn-warning, .btn-info, .btn-success, .btn-secondary {
+  background: var(--btn-bg) !important;
+  border: none !important;
+  color: var(--btn-text) !important;
+  font-weight: 500;
+  border-radius: 6px;
+  box-shadow: none;
+  transition: background 0.2s;
+}
+.btn:hover, .btn-primary:hover, .btn-warning:hover, .btn-info:hover, .btn-success:hover, .btn-secondary:hover {
+  background: var(--btn-hover) !important;
+  color: var(--btn-text) !important;
+}
+.btn-login {
+  background: var(--neutral-800) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.btn-login:hover {
+  background: var(--neutral-900) !important;
+  color: #fff !important;
+}
+.btn-danger {
+  background: var(--btn-bg) !important;
+  border: none !important;
+  color: var(--danger) !important;
+  font-weight: 500;
+  border-radius: 6px;
+  box-shadow: none;
+}
+.btn-danger:hover {
+  background: var(--btn-hover) !important;
+  color: var(--danger) !important;
+}
+.form-control {
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+.card-body form, .card-body .d-flex, .container > .row {
+  justify-content: center !important;
+  align-items: center !important;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h2, h4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.navbar {
+  background: var(--card) !important;
+  border-bottom: 1px solid var(--border);
+}
+.navbar .navbar-brand, .navbar .nav-link {
+  color: var(--primary) !important;
+  font-weight: 500;
+}
+footer.bg-dark {
+  background: var(--card) !important;
+  color: var(--muted) !important;
+  border-top: 1px solid var(--border);
+}
+.alert {
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  color: var(--primary);
+  background: #f3f3f3;
+  border: 1px solid var(--border);
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: var(--background);
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: var(--card);
+}
+
+.bg-primary,
+.bg-success,
+.bg-info {
+  background: var(--neutral-800) !important;
+}
+.bg-danger {
+  background: var(--neutral-700) !important;
+}
+.bg-warning {
+  background: var(--neutral-600) !important;
+}
+
+.text-danger {
+  color: var(--neutral-800) !important;
+}
+.text-warning {
+  color: var(--neutral-700) !important;
+}
+.text-success {
+  color: var(--neutral-600) !important;
+}
+
+.badge {
+  background: var(--btn-bg) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+}
+.badge.bg-danger {
+  background: var(--neutral-700) !important;
+  color: #fff !important;
+  border-color: var(--neutral-700) !important;
+}
+.badge.bg-secondary {
+  background: var(--neutral-600) !important;
+  color: #fff !important;
+  border-color: var(--neutral-600) !important;
+}
+.badge.bg-primary,
+.badge.bg-info,
+.badge.bg-success,
+.badge.bg-warning {
+  background: var(--neutral-800) !important;
+  color: #fff !important;
+  border-color: var(--neutral-800) !important;
+}
+
+.alert-success,
+.alert-info,
+.alert-primary {
+  background: #eef2f7 !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+}
+.alert-danger,
+.alert-warning {
+  background: #f4f4f5 !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+}
