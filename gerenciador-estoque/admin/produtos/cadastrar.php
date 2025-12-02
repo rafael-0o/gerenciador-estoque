@@ -17,10 +17,24 @@ if ($_POST) {
       $_POST['preco_venda'], 
       $_POST['quantidade_estoque']
     ]);
+    $produto_id = $pdo->lastInsertId();
+    $fornecedor_id = $_POST['fornecedor_id'] ?? null;
+    if ($fornecedor_id) {
+      $stmt = $pdo->prepare("INSERT INTO produto_fornecedor (produto_id, fornecedor_id) VALUES (?, ?)");
+      $stmt->execute([$produto_id, $fornecedor_id]);
+    }
     $sucesso = true;
   } catch (PDOException $e) {
     $erro = "Erro ao cadastrar produto: " . $e->getMessage();
   }
+}
+
+// Carrega fornecedores para seleção
+$fornecedores = [];
+try {
+  $stmt = $pdo->query("SELECT id, nome FROM fornecedores ORDER BY nome ASC");
+  $fornecedores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
 }
 
 include '../../includes/header.php';
@@ -54,6 +68,15 @@ include '../../includes/header.php';
                     <div class="col-md-12">
                         <label class="form-label">Descrição</label>
                         <textarea name="descricao" class="form-control" placeholder="Descrição" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label">Fornecedor</label>
+                        <select name="fornecedor_id" class="form-control" required>
+                            <option value="">Selecione o fornecedor</option>
+                            <?php foreach ($fornecedores as $f): ?>
+                                <option value="<?= $f['id'] ?>"><?= htmlspecialchars($f['nome']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Preço de Custo</label>

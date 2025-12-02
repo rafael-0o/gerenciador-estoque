@@ -5,6 +5,8 @@
 
 <?php
 $total_produtos = $pdo->query("SELECT COUNT(*) as total FROM produtos")->fetch()['total'];
+$total_fornecedores = $pdo->query("SELECT COUNT(*) as total FROM fornecedores")->fetch()['total'];
+$total_clientes = $pdo->query("SELECT COUNT(*) as total FROM clientes")->fetch()['total'];
 $estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quantidade_estoque = 0")->fetch()['total'];
 ?>
 
@@ -21,7 +23,23 @@ $estoque_baixo = $pdo->query("SELECT COUNT(*) as total FROM produtos WHERE quant
         <div class="card">
             <div class="card-body text-center">
                 <h4><?php echo $estoque_baixo; ?></h4>
-                <p>Estoque Baixo</p>
+                <p>Estoque Esgotado</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h4><?php echo $total_fornecedores; ?></h4>
+                <p>Total de Fornecedores</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body text-center">
+                <h4><?php echo $total_clientes; ?></h4>
+                <p>Total de Clientes</p>
             </div>
         </div>
     </div>

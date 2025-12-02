@@ -52,6 +52,7 @@ $fornecedor_counts = $pdo->query("SELECT f.nome, COUNT(*) as total FROM produto_
             <span class="input-group-text">Limite estoque baixo</span>
             <input type="number" name="limite" class="form-control" min="1" value="<?php echo (int)$threshold; ?>">
             <button class="btn btn-primary" type="submit">Aplicar</button>
+            <a href="dashboard.php" class="btn btn-outline-secondary">Voltar ao Dashboard</a>
           </div>
         </form>
       </div>

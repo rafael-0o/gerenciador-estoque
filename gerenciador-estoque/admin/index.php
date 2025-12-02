@@ -6,44 +6,34 @@ if (session_status() === PHP_SESSION_NONE) {
 include '../includes/database.php';
 
 $error = '';
-$debug = '';
 $success = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $senha = $_POST['senha'] ?? '';
-    $debug .= "Email recebido: " . htmlspecialchars($email) . "<br>";
-    $debug .= "Senha recebida: " . str_repeat("*", strlen($senha)) . "<br>";
     try {
         $pdo->query("SELECT 1 FROM usuarios LIMIT 1");
         $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
         if ($user) {
-            $debug .= "Usuário encontrado: SIM<br>";
             if ($user['senha'] === md5($senha)) {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['user_nome'] = $user['nome'];
                 $_SESSION['nivel_acesso'] = $user['nivel_acesso'];
-                $debug .= "Login bem-sucedido!<br>";
-                echo '<div style="background: #dff0d8; color: #3c763d; padding: 20px; text-align: center;">Login validado! Redirecionando para o dashboard...</div>';
+                echo '<div style="background: #dff0d8; color: #3c763d; padding: 20px; text-align: center;">Login realizado. Redirecionando para o dashboard...</div>';
                 ob_end_flush();
                 echo '<meta http-equiv="refresh" content="2;url=dashboard.php">';
                 echo '<script>setTimeout(function(){window.location.replace("dashboard.php")}, 2000);</script>';
                 exit();
             } else {
-                $error = "Senha incorreta!";
-                $debug .= "Senha informada: " . md5($senha) . "<br>Senha esperada: " . $user['senha'] . "<br>";
+                $error = "Senha incorreta. Verifique e tente novamente.";
             }
         } else {
-            $error = "Email não encontrado!";
-            $debug .= "Usuários no banco: ";
-            $all_users = $pdo->query("SELECT email FROM usuarios")->fetchAll();
-            $debug .= implode(", ", array_column($all_users, 'email')) . "<br>";
+            $error = "Email não cadastrado. Confira se digitou corretamente.";
         }
     } catch (PDOException $e) {
         $error = "Erro: " . $e->getMessage();
-        $debug .= "Erro na query: " . $e->getCode();
     }
 }
 ?>
@@ -64,12 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php if ($error): ?>
                             <div class="alert alert-danger">
                                 <?php echo htmlspecialchars($error); ?>
-                            </div>
-                        <?php endif; ?>
-                        <?php if ($debug): ?>
-                            <div class="alert alert-info" style="font-size: 12px;">
-                                <strong>Debug:</strong><br>
-                                <?php echo $debug; ?>
                             </div>
                         <?php endif; ?>
                         <form method="POST">

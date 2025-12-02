@@ -102,6 +102,9 @@ h2, h4 {
   color: var(--primary) !important;
   font-weight: 500;
 }
+.navbar.navbar-dark .navbar-brand, .navbar.navbar-dark .nav-link {
+  color: #fff !important;
+}
 footer.bg-dark {
   background: var(--card) !important;
   color: var(--muted) !important;

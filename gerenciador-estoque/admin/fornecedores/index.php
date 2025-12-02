@@ -30,10 +30,13 @@ include '../../includes/header.php';
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between mb-3">
-                    <form method="get" class="d-flex">
-                        <input type="text" name="q" class="form-control me-2" placeholder="Buscar por nome ou CNPJ" value="<?= htmlspecialchars($busca) ?>">
-                        <button class="btn btn-secondary">Buscar</button>
-                    </form>
+                    <div class="d-flex">
+                        <form method="get" class="d-flex">
+                            <input type="text" name="q" class="form-control me-2" placeholder="Buscar por nome ou CNPJ" value="<?= htmlspecialchars($busca) ?>">
+                            <button class="btn btn-secondary" type="submit">Buscar</button>
+                        </form>
+                        <a href="../dashboard.php" class="btn btn-outline-secondary ms-2">Voltar ao Dashboard</a>
+                    </div>
                     <a href="cadastrar.php" class="btn btn-primary">Novo Fornecedor</a>
                 </div>
                 <table class="table table-striped">

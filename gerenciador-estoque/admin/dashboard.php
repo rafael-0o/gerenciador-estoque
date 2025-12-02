@@ -22,7 +22,7 @@ $valor_total = $pdo->query("SELECT SUM(preco_custo * quantidade_estoque) as tota
     <div class="col-md-3"><div class="card text-center p-3"><h4><?php echo $total_produtos; ?></h4><p>Produtos</p></div></div>
     <div class="col-md-3"><div class="card text-center p-3"><h4><?php echo $total_fornecedores; ?></h4><p>Fornecedores</p></div></div>
     <div class="col-md-3"><div class="card text-center p-3"><h4><?php echo $total_clientes; ?></h4><p>Clientes</p></div></div>
-    <div class="col-md-3"><div class="card text-center p-3"><h4><?php echo $estoque_baixo; ?></h4><p>Estoque Baixo</p></div></div>
+    <div class="col-md-3"><div class="card text-center p-3"><h4><?php echo $estoque_baixo; ?></h4><p>Estoque Esgotado</p></div></div>
 </div>
 <div class="row mt-4">
     <div class="col-md-12"><div class="card text-center p-3"><h4>R$ <?php echo number_format($valor_total, 2, ',', '.'); ?></h4><p>Valor Total em Estoque</p></div></div>

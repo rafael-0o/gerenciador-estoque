@@ -1,6 +1,38 @@
- Objetivo Geral
+Objetivo Geral
 Criar uma aplicação web em PHP para gerenciar o fluxo de Produtos, Fornecedores, Clientes e Movimentações de Estoque.
 O sistema deve apresentar duas interfaces distintas: uma Admin (completa e sensível) e uma Vendedor (simplificada e focada em vendas).
+
+Tecnologias e Dependências
+- PHP 7+ com `PDO` para acesso ao MySQL (`includes/database.php`).
+- MySQL/MariaDB (script em `config/database.sql`).
+- Bootstrap 5.1.3 via CDN para UI.
+- CSS customizado em `css/style.css`.
+- Sessões PHP para autenticação básica (`includes/auth.php`).
+- JavaScript mínimo inline para redirecionamento pós-login (`admin/index.php`).
+
+Estrutura de Diretórios
+- `admin/` páginas protegidas e CRUDs.
+- `includes/` cabeçalho, rodapé, auth, conexão.
+- `css/` estilos.
+- `config/` scripts SQL de criação de banco.
+- Raiz do módulo: páginas públicas (`index.php`, `produtos.php`, `contato.php`).
+
+Configuração e Execução
+- Importe `config/database.sql` no MySQL para criar tabelas e usuário admin.
+- Ajuste credenciais em `includes/database.php` (`host`, `dbname`, `username`, `password`).
+- Coloque o projeto em `htdocs` do XAMPP e acesse `index.php` pelo navegador.
+
+Autenticação
+- Login em `admin/index.php` valida usuário na tabela `usuarios` e cria sessão `user_id`.
+- Proteção de rotas com `redirectIfNotLoggedIn()` (`includes/auth.php`).
+- Navegação condicionada ao login em `includes/header.php`.
+
+Principais Páginas
+- Admin: `admin/dashboard.php`, `admin/produtos/`, `admin/fornecedores/`, `admin/clientes/`, `admin/movimentacoes/`, `admin/relatorios.php`.
+- Públicas: `index.php`, `produtos.php`, `contato.php`.
+
+Observações de Segurança
+- Senhas são armazenadas com MD5 no banco (modelo simples). Para produção, recomenda-se `password_hash()`/`password_verify()`.
 
 Estrutura do Projeto 
 O sistema de estoque precisará gerenciar informações sobre produtos, fornecedores, clientes e movimentações de estoque.
